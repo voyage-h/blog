@@ -1,0 +1,193 @@
+body{
+   background-color:/*#f5f8fa*/cadetblue;
+}
+.container{
+    width:70%;
+}
+.breadcrumb {
+}
+.card-container {
+    float:left;
+    width:70%;
+    max-width:70%;
+}
+.menu-container{
+    float:left;
+    width:26%;
+    max-width:26%;
+}
+.site-login,.card {
+    margin-bottom:20px;
+}
+.site-login {
+    background-color:#fff;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom:20px;
+    width:500px;
+    margin-right:auto;
+    margin-left:auto;
+}
+.site-login-title {
+    background-color:whitesmoke;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-width: 0 0 1px 0;
+    padding: 10px 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.site-login form {
+    padding:20px;
+}
+.card-avatar {
+    float:left;
+}
+.comment img,.card-avatar img,.menu-avatar img,.menu-recommend img {
+    width:60px;
+    height:60px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+.menu {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding:10px 15px;
+    margin-left: 20px;
+    margin-bottom:20px;
+    background-color:#fff;
+}
+.menu-avatar {
+    text-align:center;
+}
+.menu-username {
+   color:#444;
+}
+.menu-avatar img {
+    border-radius:100px;
+}
+.menu-recommend img {
+    width:40px;
+    height:40px;
+}
+.menu-btn {
+    margin:20px 0 10px 0;
+}
+.menu-btn a {
+    font-size:14px;
+    color:#555;
+    font-weight:bold;
+    margin:0 10px;
+}
+.comment img {
+   width:40px;
+   height:40px;
+}
+.card-content {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    padding:10px 15px;
+    margin-left: 70px;
+    background-color:#fff;
+}
+.card-title a{
+    font-size:16px;
+    color:#666;
+}
+.card-status {
+    color: #999;
+}
+.card-text {
+    font-size: 16px;
+    font-weight: normal;
+    margin:10px 0;
+}
+.card-text a {
+    color:coral;
+}
+.card-btn {
+    margin-top:20px;
+    text-align:right
+}
+.card-btn a {
+    color:#999
+}
+.card-btn-right a{
+    margin-left:30px;
+}
+.card-btn a:hover{
+    color:#666;
+    text-decoration:none;
+}
+.card-btn-delete {
+    display:none;
+    float:right;
+}
+.repost {
+    background-color: whitesmoke;
+    padding: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    font-size:12px;
+}
+.comment-btn{
+    float: right;
+    margin: 10px 10px 0 0;
+}
+.upload-images {
+}
+.upload-images img{
+    width:100%;
+}
+.upload-avatar{
+    text-align:center;
+}
+.preview-img {
+    max-width:160px;
+    max-height:160px;
+/*    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+*/
+    margin:2px;
+}
+.card-img img {
+    margin:4px;
+    width:31%;
+    border: 1px solid #eee;
+    border-radius: 0.25rem;
+}
+.card-img img:first-child:nth-last-child(1) {
+}
+.card-img img:first-child:nth-last-child(2),
+.card-img img:first-child:nth-last-child(2) ~ img,
+
+.card-img img:first-child:nth-last-child(4),
+.card-img img:first-child:nth-last-child(4) ~ img {
+    width: 47%;
+}
+.card-btn{
+    margin-bottom:10px;
+}
+.card-btn-left {
+    float:left;
+}
+.card-btn .active {
+    color:sandybrown;
+}
+.btn-form a {
+    float:left;
+    color:#666;
+    margin-right:15px;
+    margin-bottom:10px;
+
+}
+.btn-form a:hover {
+    color:#333
+}
+.comment-content {
+    background-color: #eee;
+    padding: 10px;
+    margin-left: 40px;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}

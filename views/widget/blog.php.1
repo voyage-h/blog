@@ -1,0 +1,108 @@
+<?php
+use yii\bootstrap\Html;
+use yii\bootstrap\ActiveForm;
+use yii\bootstrap\Modal;
+use app\models\Blog;
+
+?>
+
+<?php if (empty($blogs)): ?>
+<div class="card-content">还没有发过状态</div>
+<?php endif ?>
+
+
+<?php foreach($blogs as $blog) :?>
+
+<div class="card">
+
+  <!-- 头像  -->
+  <div class="card-avatar">
+    <a href="?r=user/show&id=<?=$blog->user->id?>"><img src="/images/upload/<?=$blog->user->avatar  ?? 'default.jpg'?>"></a>
+  </div>
+  <!-- /头像  -->
+
+  <!--  内容 -->
+  <div class="card-content">
+
+    <!--  标题 -->
+    <p class="card-title">
+      <a href="?r=user/show&id=<?=$blog->user->id?>"><?=$blog->user->name?></a>
+      <?php if($blog->user->id == Yii::$app->user->id): ?>
+      <a href="?r=site/delete&id=<?=$blog->id?>" class="card-btn-delete"><?=Html::icon('remove')?></a>
+      <?php endif ?>
+    </p>
+    <!--  /标题 -->
+
+    <!--  状态 -->
+    <p class="card-status"><?=$blog->created_at?> <?=$blog->parent_id ? '转发' : '发布'?>了状态</p>
+    <!--  /状态 -->
+    
+
+    <!-- 转发 -->
+    <?php if($blog->parent_id): ?>
+    <?php $origin_blog = app\models\Blog::find()->where(['id'=>$blog->origin_id])->with('user')->one();?>
+
+    <p class="card-text"><?=empty($blog->text) ? '转发了' : $blog->text; ?></p>
+    <div class="repost">
+    <p class="card-title">
+    <?php if($origin_blog): ?>
+    <a href="?r=user/show&id=<?=$origin_blog->user->id?>">@<?=$origin_blog->user->name?></a>
+    <?php else: ?>
+    原微博已被删除
+    <?php endif ?>
+
+    </p>
+    <p class="card-text"><?=$origin_blog->text?></p>
+    <?php if($origin_blog->img): ?>
+      <p class="card-img">
+      <?php foreach(json_decode($origin_blog->img) as $img) : ?>
+       <img src="/images/upload/<?=$img?>">
+       <?php endforeach ?>
+      </p>
+    <?php endif ?>
+    <?=app\widgets\CardButtonWidget::widget(['blog'=>$origin_blog])?>
+    </div>
+
+    <?php else :?>
+    <p class="card-text"><?=$blog->text?></p>
+    <?php if($blog->img): ?>
+    <p class="card-img">
+    <?php foreach(json_decode($blog->img) as $img) : ?>
+    <img src="/images/upload/<?=$img?>">
+    <?php endforeach ?>
+    </p>
+    <?php endif ?>
+
+    <?php endif ?>
+
+     <?=app\widgets\CardButtonWidget::widget(['blog'=>$blog])?>
+  </div>
+  <!--  /内容  -->
+
+</div>
+<?php endforeach;?>
+
+
+<?php
+Modal::begin([
+     'header' => '<h4>转发</h4>',
+     'options' => [
+         'id' => 'repostModal',
+     ]
+ ]);?>
+<?php $blogModel = new Blog();?>
+<?php $form = ActiveForm::begin([
+    'action' => '?r=site/repost',
+    'options' => [
+        'id' => 'repost-form',
+    ]
+]); ?>
+
+<?= $form->field($blogModel, 'text')->textarea(['rows'=>3]) ?>
+<?= $form->field($blogModel, 'id', ['template'=>'{input}'])->hiddenInput() ?>
+
+<div class="form-group" style="text-align:right">
+    <?= Html::submitButton('提交', ['class' => 'btn btn-primary']) ?>
+</div>
+<?php ActiveForm::end(); ?>
+<?php Modal::end();?>
